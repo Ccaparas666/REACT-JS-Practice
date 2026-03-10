@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson Exercise 2</title>
+  </head>
+  <body>
+    <div class="js-container1"></div>
+    <div class="js-container2"></div>
+    <div class="js-container3"></div>
+
+    
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      // Exercise 2a
+      function AppExercise1 () {
+        return (
+          <>
+            <h1>Exercise 2a</h1>
+            <p>Hello, Welcome to my website</p>
+          </>
+        );
+      }
+
+      // Exercise 2b
+      function AppExercise2 () {
+        return (
+          <>
+            <h1>Exercise 2b</h1>
+            <p>Hello, Welcome to my website</p>
+            <button>Login</button>
+            <button>Sign up</button>
+          </>
+        );
+      }
+
+      // Exercise 2c
+      function AppExercise3 () {
+        return (
+          <>
+            <h1>Exercise 2b</h1>
+            <p>Hello, Welcome to my website</p>
+            <input type="password" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <button>Login</button>
+            <button>Sign up</button>
+          </>
+        );
+      }
+
+    
+
+      const container1 = document.querySelector('.js-container1');
+      ReactDOM.createRoot(container1).render(<AppExercise1 />);
+
+      const container2 = document.querySelector('.js-container2');
+      ReactDOM.createRoot(container2).render(<AppExercise2 />);
+
+      const container3 = document.querySelector('.js-container3');
+      ReactDOM.createRoot(container3).render(<AppExercise3 />);
+
+    </script>
+  </body>
+</html>
