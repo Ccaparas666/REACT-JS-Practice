@@ -213,8 +213,8 @@
 
       function ProductDetails3 ( {productname, price, discountPrice, imageSrc}) {
           return (
-                <>
-                  <img src={imageSrc} alt="" />  
+                <div>
+                  <img src={imageSrc} alt="" width="150"/>  
                   <p>{productname}</p>
 
                   {discountPrice ? (
@@ -231,7 +231,7 @@
                     <p>Discount Price: ${discountPrice}</p>
                   )}
                   <button>Add to Cart</button> 
-                </>
+                </div>
           );
       }
 
