@@ -7,6 +7,11 @@
     <div class="js-container1"></div>
     <div class="js-container2"></div>
     <div class="js-container3"></div>
+    <div class="js-container4"></div>
+    <div class="js-container5"></div>
+    <div class="js-container6"></div>
+    <div class="js-container7"></div>
+    <div class="js-container8"></div>
 
     
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
@@ -41,17 +46,196 @@
       function AppExercise3 () {
         return (
           <>
-            <h1>Exercise 2b</h1>
-            <p>Hello, Welcome to my website</p>
-            <input type="password" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <h1>Exercise 2c</h1>
+            <div>
+              <p>Hello, Welcome to my website</p>
+            </div>
+            <div>
+              <input type="text" placeholder="Email" />
+            </div>
+            <div>
+              <input type="password" placeholder="Password" />
+            </div>
             <button>Login</button>
             <button>Sign up</button>
           </>
         );
       }
 
-    
+      //exercise 2d
+
+      function LoginForm () {
+        return (
+          <>
+            <div>
+              <input type="text" placeholder="Email" />
+            </div>
+            <div>
+              <input type="password" placeholder="Password" />
+            </div>
+            <button>Login</button>
+            <button>Sign up</button>
+          </>
+        )
+            
+      }
+      
+      function AppExercise4 () {
+        return (
+          <>
+            <h1>Exercise 2d</h1>
+            <div>
+              <p>Hello, Welcome to my website</p>
+            </div>
+            <LoginForm />
+          </>
+        );
+      }
+
+      //exercise 2e, 2f
+
+      function AppExercise5 () {
+        return (
+          <>
+            <h1>Exercise 2e</h1>
+            <p>Cotton socks</p>
+            <p>Price: $10.90</p>
+            <button>Add to Cart</button>
+          </>
+        );
+      }
+
+      //exercise 2f
+      function ProductDetails ( {productname, price}) {
+          return (
+            <>
+              <p>{productname}</p>
+              <p>Price: ${price}</p>
+              <button>Add to Cart</button>
+            </>
+          );
+      }
+      function AppExercise6 () {
+        return (
+          <>
+            <h1>Exercise 2f</h1>
+            <ProductDetails 
+              productname="Cotton socks" 
+              price="10.90" 
+            />
+            <ProductDetails 
+              productname="Tennis balls" 
+              price="6.00" 
+            />
+            <ProductDetails 
+              productname="Plain T-Shirt" 
+              price="7.99" 
+            />
+          </>
+        );
+      }
+
+      //exercise 2g 2h
+      function ProductDetails2 ( {productname, price, discountPrice}) {
+          return (
+            <>
+              {discountPrice && (
+                <>
+                  <p>{productname}</p>
+                  <del><p>Price: ${price}</p></del>
+                  {discountPrice && (
+                    <p>Discount Price: ${discountPrice}</p>
+                  )}
+                  <button>Add to Cart</button>
+                </>  
+              )}
+              {!discountPrice && (
+                <>
+                  <p>{productname}</p>
+                  <p>Price: ${price}</p>
+                  {discountPrice && (
+                    <p>Discount Price: ${discountPrice}</p>
+                  )}
+                  <button>Add to Cart</button>
+                </> 
+              )} 
+            </>
+          );
+      }
+      console.log(ProductDetails2);
+
+      function AppExercise7 () {
+        return (
+          <>
+            <h1>Exercise 2g</h1>
+            <ProductDetails2 
+              productname="Cotton socks" 
+              price="10.90"
+              discountPrice="5.45"
+            />
+            <ProductDetails2 
+              productname="Tennis balls" 
+              price="6.00" 
+            />
+            <ProductDetails2 
+              productname="Plain T-Shirt" 
+              price="7.99" 
+            />
+          </>
+        );
+      }
+
+
+      //exercise 2i ternary operator 
+      function AppExercise8 () {
+        return (
+          <>
+            <h1>Exercise 2I</h1>
+            <ProductDetails3
+              imageSrc="../cotton-socks.png"
+              productname="Cotton socks" 
+              price="10.90"
+              discountPrice="5.45"
+            />
+            <ProductDetails3
+              imageSrc="../plain-t-shirt.png" 
+              productname="Tennis balls" 
+              price="6.00" 
+            />
+            <ProductDetails3
+              imageSrc="../tennis-balls.png" 
+              productname="Plain T-Shirt" 
+              price="7.99" 
+            />
+          </>
+        );
+      }
+
+      function ProductDetails3 ( {productname, price, discountPrice, imageSrc}) {
+          return (
+                <>
+                  <img src={imageSrc} alt="" />  
+                  <p>{productname}</p>
+
+                  {discountPrice ? (
+                    <>
+                    <p><del>Price: ${price}</del></p>
+                    </>
+                  ) : (
+                    <>
+                    <p>Price: ${price}</p> 
+                    </> 
+                  )    
+                  }
+                  {discountPrice && (
+                    <p>Discount Price: ${discountPrice}</p>
+                  )}
+                  <button>Add to Cart</button> 
+                </>
+          );
+      }
+
+      
 
       const container1 = document.querySelector('.js-container1');
       ReactDOM.createRoot(container1).render(<AppExercise1 />);
@@ -61,7 +245,23 @@
 
       const container3 = document.querySelector('.js-container3');
       ReactDOM.createRoot(container3).render(<AppExercise3 />);
+      
+      const container4 = document.querySelector('.js-container4');
+      ReactDOM.createRoot(container4).render(<AppExercise4 />);
 
-    </script>
+      const container5 = document.querySelector('.js-container5');
+      ReactDOM.createRoot(container5).render(<AppExercise5 />);
+
+      const container6 = document.querySelector('.js-container6');
+      ReactDOM.createRoot(container6).render(<AppExercise6 />);
+
+      const container7 = document.querySelector('.js-container7');
+      ReactDOM.createRoot(container7).render(<AppExercise7 />);
+
+      const container8 = document.querySelector('.js-container8');
+      ReactDOM.createRoot(container8).render(<AppExercise8 />);
+
+      
+      </script>
   </body>
 </html>
