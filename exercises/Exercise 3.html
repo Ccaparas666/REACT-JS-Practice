@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Lesson Exercise 2</title>
+  </head>
+  <body>
+    <div class="js-container1"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      // Exercise 3a, 3b
+      function AppExercise1() {
+        const [count, setCount] = React.useState(0);
+
+        function increaseCount() {
+          setCount(count + 1);
+          console.log("I click");
+        }
+
+        return (
+          <>
+            {count < 1 ? (
+              <>
+                <button onClick={increaseCount}>Clicked {count} time</button>
+              </>
+            ) : (
+              <>
+                <button onClick={increaseCount}>Clicked {count} times</button>
+              </>
+            )}
+          </>
+        );
+      }
+
+      const container1 = document.querySelector(".js-container1");
+      ReactDOM.createRoot(container1).render(<AppExercise1 />);
+    </script>
+  </body>
+</html>
