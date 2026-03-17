@@ -5,38 +5,130 @@
   </head>
   <body>
     <div class="js-container1"></div>
+    <div class="js-container2"></div>
 
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      // Exercise 3a, 3b
-      function AppExercise1() {
-        const [count, setCount] = React.useState(0);
+      // Exercise 3a, 3b, 3c, 3d, 3e, 3f
+
+      function Counter({count, setCount}) {
 
         function increaseCount() {
           setCount(count + 1);
           console.log("I click");
+          console.log({count});  
         }
 
         return (
           <>
-            {count < 1 ? (
-              <>
-                <button onClick={increaseCount}>Clicked {count} time</button>
-              </>
-            ) : (
-              <>
-                <button onClick={increaseCount}>Clicked {count} times</button>
-              </>
-            )}
+            <button onClick={increaseCount}>
+              Clicked {count} {count === 1 ? 'time' : 'times'}
+            </button>
           </>
         );
       }
+      
+      
+      function ResetButton ({count, setCount}) {  
+
+        function ResetCounter () { 
+        setCount(0);
+      }
+        
+        return (
+          <>
+          <button onClick={ResetCounter}>Reset</button>
+          </>
+        )
+      }
+
+
+      function AppExercise1() {
+        const [count, setCount] = React.useState(0);
+
+        return (
+          <>
+            <Counter 
+              count={count}
+              setCount={setCount}
+            />
+            <Counter 
+              count={count}
+              setCount={setCount} 
+            />
+
+            <ResetButton 
+              count={count}
+              setCount={setCount}
+            />
+          </>
+        )
+        
+      }
+
+      // Exercise 3g
+      function AppExercise2 () {
+        const [textInput, setTextInput] = React.useState('');
+        return (
+          <>
+            <RenderInputs 
+              setTextInput={setTextInput}
+              textInput={textInput}
+            />
+            
+          </>
+        )
+      }
+
+      //testing lifting state up
+
+      function RenderInputs ({textInput, setTextInput}) {
+
+        function saveInputText(event) {
+         setTextInput(event.target.value);
+        }
+
+        function resetText () {
+            setTextInput(''); 
+        }
+  
+        function exampleText () {
+          setTextInput('Sample Name');
+        }
+
+        
+
+        return (
+          <>
+            <div>
+              <input 
+                type="text" 
+                placeholder="Type a name here"
+                onChange={saveInputText}
+                value={textInput} 
+              />
+              <button onClick={resetText}>Reset</button>
+              <button onClick={exampleText}>Example</button> 
+            </div>
+             
+            <p>Hello {textInput}</p>
+          </>
+        )
+      }
+
+
+      
+
+         
 
       const container1 = document.querySelector(".js-container1");
       ReactDOM.createRoot(container1).render(<AppExercise1 />);
+
+      const container2 = document.querySelector(".js-container2");
+      ReactDOM.createRoot(container2).render(<AppExercise2 />)
     </script>
   </body>
 </html>
