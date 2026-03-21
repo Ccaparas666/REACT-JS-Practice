@@ -13,7 +13,6 @@ export function CheckOutPage({ cart }) {
         axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
             .then((response) => {
                 setDeliveryOptions(response.data);
-                console.log(response.data);
             });
 
         axios.get('/api/payment-summary')
