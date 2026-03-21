@@ -17,7 +17,7 @@ function App() {
         setCart(response.data);
         // console.log(response.data);
       });
-  })
+  }, []);
 
   return (
     <>
