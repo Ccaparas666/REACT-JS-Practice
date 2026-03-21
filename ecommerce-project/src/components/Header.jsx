@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { NavLink } from 'react-router';
 import LogoWhite from '../assets/images/logo-white.png';
 import MobileLogoWhite from '../assets/images/mobile-logo-white.png';
@@ -6,11 +7,17 @@ import CartIcon from '../assets/images/icons/cart-icon.png'
 import './header.css'
 
 export function Header() {
-    fetch('http://localhost:3000/api/products')
+    //for fetching without using axios
+    // fetch('http://localhost:3000/api/products')
+    //     .then((response) => {
+    //         return response.json();
+    //     }).then ((data) => {
+    //         console.log(data);
+    //     });
+
+    axios.get('http://localhost:3000/api/products')
         .then((response) => {
-            return response.json();
-        }).then ((data) => {
-            console.log(data);
+            console.log(response.data);
         });
 
     return (
