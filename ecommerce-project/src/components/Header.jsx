@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import { NavLink } from 'react-router';
 import LogoWhite from '../assets/images/logo-white.png';
 import MobileLogoWhite from '../assets/images/mobile-logo-white.png';
@@ -14,11 +14,6 @@ export function Header() {
     //     }).then ((data) => {
     //         console.log(data);
     //     });
-
-    axios.get('http://localhost:3000/api/products')
-        .then((response) => {
-            console.log(response.data);
-        });
 
     return (
         <>

@@ -1,10 +1,21 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Header } from '../components/Header'
-import { products } from '../../../starting project/data/products'
 import './HomePage.css'
 
 import CheckMark from '../assets/images/icons/checkmark.png'
 
 export function HomePage() {
+
+    const [products, setproducts] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/products')
+            .then((response) => {
+                setproducts(response.data);
+            });
+    }, []);
+
     return (
         <>
             <link rel="icon" type="image/svg+xml" href="/home-favicon.png" />
@@ -35,7 +46,7 @@ export function HomePage() {
                                 </div>
 
                                 <div className="product-price">
-                                    ${(product.priceCents/100).toFixed(2)}
+                                    ${(product.priceCents / 100).toFixed(2)}
                                 </div>
 
                                 <div className="product-quantity-container">
