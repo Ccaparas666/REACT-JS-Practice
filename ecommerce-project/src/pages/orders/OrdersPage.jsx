@@ -1,9 +1,10 @@
 import axios from 'axios';
 import dayjs from 'dayjs'
-import BuyAgain from '../assets/images/icons/buy-again.png'
+import BuyAgain from '../../assets/images/icons/buy-again.png'
+import { Link } from 'react-router'
 import { useState, useEffect, Fragment } from 'react'
-import { Header } from '../components/Header'
-import { formatMoney } from '../utils/money'
+import { Header } from '../../components/Header'
+import { formatMoney } from '../../utils/money'
 import './OrdersPage.css'
 
 export function OrdersPage({ cart }) {
@@ -52,7 +53,7 @@ export function OrdersPage({ cart }) {
                                         return (
                                             <Fragment key={product.productId}>
                                                 <div className="product-image-container">
-                                                    <img src={product.product.image}/>
+                                                    <img src={product.product.image} />
                                                 </div>
 
                                                 <div className="product-details">
@@ -72,11 +73,11 @@ export function OrdersPage({ cart }) {
                                                 </div>
 
                                                 <div className="product-actions">
-                                                    <a href="/tracking">
+                                                    <Link to="/tracking">
                                                         <button className="track-package-button button-secondary">
                                                             Track package
                                                         </button>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </Fragment>
                                         );
