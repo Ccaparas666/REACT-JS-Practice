@@ -10,15 +10,43 @@ export function CheckOutPage({ cart }) {
     const [paymentSumarry, setPaymentSummary] = useState(null);
 
     useEffect(() => {
-        axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
-            .then((response) => {
-                setDeliveryOptions(response.data);
-            });
+        //OTHER METHOD FOR GETTING DATA
+        // axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
+        //     .then((response) => {
+        //         setDeliveryOptions(response.data);
+        //     });
 
-        axios.get('/api/payment-summary')
-            .then((response) => {
-                setPaymentSummary(response.data);
-            });
+        // axios.get('/api/payment-summary')
+        //     .then((response) => {
+        //         setPaymentSummary(response.data);
+        //     });
+
+        //Individual GET DATA
+        // const getDeliveryOptions = async () => {
+        //     const response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime');
+        //     setDeliveryOptions(response.data);
+        // };
+        // getDeliveryOptions();
+
+        // const getPaymentSummary = async () => {
+        //     const response = await axios.get('/api/payment-summary');
+        //     setPaymentSummary(response.data);
+        // }
+
+        // getPaymentSummary();
+
+        //MULTIPLE FUNCTION GET DATA
+
+        const fetchCheckoutData = async () => {
+            let response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime');
+            setDeliveryOptions(response.data);
+
+            response = await axios.get('/api/payment-summary');
+            setPaymentSummary(response.data);
+        }
+
+        fetchCheckoutData();
+
     }, []);
     return (
         <>
@@ -32,13 +60,13 @@ export function CheckOutPage({ cart }) {
                 <div className="checkout-grid">
                     <OrderSummary
                         deliveryOptions={deliveryOptions}
-                        cart={cart} 
+                        cart={cart}
                     />
 
-                    <PaymentSummary 
+                    <PaymentSummary
                         paymentSumarry={paymentSumarry}
                     />
-                    
+
                 </div>
             </div></>
     );
