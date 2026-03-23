@@ -66,6 +66,7 @@ export function CheckOutPage({ cart, loadCart }) {
 
                     <PaymentSummary
                         paymentSumarry={paymentSumarry}
+                        loadCart={loadCart}
                     />
 
                 </div>
