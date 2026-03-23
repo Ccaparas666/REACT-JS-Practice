@@ -1,0 +1,50 @@
+* To Fetch Data *
+
+// Retrieve DATA FROM BACKEND (GET)
+    *First make an array to store data using useState
+
+    const [dataFromBackEnd , setDataFromBackEnd] = useState([]);
+
+1.axios.get('URL');
+
+// SAVE IT TO FUNCTION
+2. const getData = async () => {
+   const response = await axios.get('URL');
+    setDataFromBackEnd(response.data);
+}
+
+
+Creating or Updating Data
+
+const createOrder = async () => {
+        await axios.post('/api/orders');
+
+       * navigate('/orders'); * - this is for redirect Using Navigate from React
+    };
+
+DELETING DATA 
+
+const deleteCartItem = async () => {
+        await axios.delete(`/api/cart-items/${cartItem.productId}`)
+    };
+
+
+FOR HANDLING RADIO BUTTON - GET VALUE
+
+const selectQuantity = (event) => {
+        const quantitySelected = Number(event.target.value);
+        setQuantity(quantitySelected);
+    }
+
+<select value={quantity} onChange={selectQuantity}>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+</select>
