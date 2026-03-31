@@ -8,6 +8,8 @@ import { TrackingPage } from './pages/TrackingPage';
 import { NotFoundPage } from './pages/NotFoundPage'
 import './App.css'
 
+window.axios = axios;
+
 function App() {
   const [cart, setCart] = useState([]);
 
@@ -27,12 +29,14 @@ function App() {
     loadCart();
   }, []);
 
+  
+
   return (
     <>
       <Routes>
         <Route index element={<HomePage cart={cart} loadCart={loadCart}/>}></Route>
         <Route path='checkout' element={<CheckOutPage cart={cart} loadCart={loadCart}/>}></Route>
-        <Route path='orders' element={<OrdersPage cart={cart} />}></Route>
+        <Route path='orders' element={<OrdersPage cart={cart} loadCart={loadCart}/>}></Route>
         <Route path="tracking/:orderId/:productId" element={<TrackingPage cart={cart} />}></Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
